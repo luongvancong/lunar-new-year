@@ -16,6 +16,7 @@
   transition: all 0.2s;
 }
 body {
+  background-color: #000;
   background-image: url(./bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -23,6 +24,10 @@ body {
   height: 100vh;
   overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
+}
+canvas {
+  cursor: crosshair;
+  display: block;
 }
 @media only screen and (max-width: 400px) {
   .result {
@@ -36,6 +41,8 @@ body {
 <div id="result" class="result" style="opacity: 0">
   Còn <span id="demo">...</span> đến Tết Nguyên Đán 2020
 </div>
+
+<canvas id="canvas">Canvas is not supported in your browser.</canvas>
 
 <script>
 // Set the date we're counting down to
@@ -82,6 +89,6 @@ var d = setInterval(function() {
 }, 300);
 
 </script>
-
+<script type="text/javascript" src="firework.js"></script>
 </body>
 </html>
