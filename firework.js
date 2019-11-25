@@ -271,6 +271,8 @@ canvas.addEventListener( 'mouseup', function( e ) {
 	mousedown = false;
 });
 
+firework3(canvas);
+
 // once the window loads, we are ready for some fireworks!
 window.onload = loop;
 
