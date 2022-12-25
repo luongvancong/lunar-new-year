@@ -3,7 +3,7 @@ import { Fireworks } from 'fireworks-js';
 
 
 // Set the date we're counting down to
-var countDownDate = new Date("Jan 23, 2023 00:00:00").getTime();
+var countDownDate = new Date("Jan 22, 2023 00:00:00").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
