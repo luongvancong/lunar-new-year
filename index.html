@@ -2,9 +2,115 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
 <title>Chúc mừng năm mới</title>
 <style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #ffffff;
+}
+
+html,
+body {
+  height: 100%;
+  /* background: url('./images/fireworks.jpg') no-repeat center center; */
+  background-size: cover;
+}
+
+.main {
+  background: rgba(0, 0, 0, 0.6);
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  max-width: 85rem;
+  margin: 0 auto;
+  padding: 0 1%;
+  opacity: 0;
+  transition: opacity 1s linear;
+}
+
+.title {
+  font-size: 4.4rem;
+  text-align: center;
+}
+
+.countdown {
+  max-width: 70rem;
+  margin: 3.2rem auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.time h2 {
+  font-size: 9.6rem;
+  text-align: center;
+}
+
+.time small {
+  display: block;
+  margin-top: 1rem;
+  font-size: 2.6rem;
+  text-align: center;
+}
+
+.year {
+  position: absolute;
+  bottom: 3.2rem;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 12rem;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+
+.loader-item {
+  background: #ffffff;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  margin: 0 0.5rem;
+}
+
+.loader-item:nth-child(1) {
+  animation: loader-animation 0.5s linear infinite;
+}
+
+.loader-item:nth-child(2) {
+  animation: loader-animation 0.5s linear 0.1s infinite;
+}
+
+.loader-item:nth-child(3) {
+  animation: loader-animation 0.5s linear 0.2s infinite;
+}
+
+@keyframes loader-animation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(1rem);
+  }
+  50% {
+    transform: translateY(-1rem);
+  }
+}
 .result {
   margin-top: 0px;
   position: absolute;
@@ -33,68 +139,59 @@ canvas {
   .result {
     font-size: 1.5em;
   }
+  .countdown {
+    flex-direction: column;
+  }
+  .result {
+    top: 10%;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .time h2 {
+    font-size: 6.6rem;
+    text-align: center;
+  }
 }
 </style>
 </head>
 <body>
 
 <div id="result" class="result" style="opacity: 0">
-  <div>Còn <span id="demo">...</span> đến Tết Nguyên Đán</div>
-  <div>Nhâm Dần 2022</div>
+  <div class="countdown">
+    <div class="time">
+      <h2 id="days">00</h2>
+      <small>Ngày</small>
+    </div>
+    <div class="time">
+      <h2 id="hours">00</h2>
+      <small>Giờ</small>
+    </div>
+    <div class="time">
+      <h2 id="minutes">00</h2>
+      <small>Phút</small>
+    </div>
+    <div class="time">
+      <h2 id="seconds">00</h2>
+      <small>Giây</small>
+    </div>
+  </div>
+
+  <div id="audio-container">
+    <audio id="audio" autoplay controls>
+      <source src="tet-tet-tet-den-roi.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+  </div>
 </div>
 
 <canvas id="canvas">Canvas is not supported in your browser.</canvas>
 
-<script>
-// Set the date we're counting down to
-var countDownDate = new Date("Feb 1, 2022 00:00:00").getTime();
 
-// Update the count down every 1 second
-var x = setInterval(function() {
-
-  // Get today's date and time
-  var now = new Date().getTime();
-    
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-    
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-  // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML = days + " Ngày " + hours + " Giờ " + minutes + " Phút " + seconds + " Giây ";
-    
-  // If the count down is over, write some text 
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "Happy lunar new year";
-  }
-
-}, 1000);
-
-var d = setInterval(function() {
-  let currentOpacity = parseFloat(document.getElementById('result').style.opacity);
-  currentOpacity += 0.1;
-  
-  if (currentOpacity <= 1) {
-    document.getElementById('result').style.opacity = currentOpacity;
-  }
-
-  if (currentOpacity === 1) {
-    clearInterval(d);
-  }
-
-}, 300);
-
-</script>
 <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
-<script type="text/javascript" src="firework3.js"></script>
-<script type="text/javascript" src="firework.js"></script>
+<script type="text/javascript" src="app.bundle.js"></script>
+
 </body>
 </html>

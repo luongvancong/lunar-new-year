@@ -1,0 +1,24 @@
+{
+  "name": "lunar-new-year",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild app.js --bundle --outfile=app.bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luongvancong/lunar-new-year.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luongvancong/lunar-new-year/issues"
+  },
+  "homepage": "https://github.com/luongvancong/lunar-new-year#readme",
+  "dependencies": {
+    "esbuild": "0.16.10",
+    "fireworks-js": "^2.10.0"
+  }
+}
