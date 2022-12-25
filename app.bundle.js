@@ -469,7 +469,7 @@
   };
 
   // app.js
-  var countDownDate = new Date("Jan 23, 2023 00:00:00").getTime();
+  var countDownDate = new Date("Jan 22, 2023 00:00:00").getTime();
   var x2 = setInterval(function() {
     var now = new Date().getTime();
     var distance = countDownDate - now;
