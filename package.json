@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild app.js --bundle --outfile=app.bundle.js"
+    "start": "export NODE_ENV=development && node build.js",
+    "build": "export NODE_ENV=production && node build.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/luongvancong/lunar-new-year#readme",
   "dependencies": {
     "esbuild": "0.16.10",
+    "esbuild-plugin-manifest": "^0.5.0",
     "fireworks-js": "^2.10.0"
   }
 }

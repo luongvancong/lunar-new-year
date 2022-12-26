@@ -191,7 +191,25 @@ canvas {
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
-<script type="text/javascript" src="app.bundle.js"></script>
+
+<script>
+  $(function() {
+    $.ajax({
+      url: '/dist/manifest.json',
+      type: 'GET',
+      success: (response) => {
+        const scriptExist = document.getElementById('app')
+        if (!scriptExist) {
+          const script = document.createElement('script')
+          script.id = 'app'
+          script.type = 'text/javascript'
+          script.src = response['app.js']
+          document.querySelector('body').append(script)
+        }
+      }
+    })
+  })
+</script>
 
 </body>
 </html>

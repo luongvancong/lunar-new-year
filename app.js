@@ -1,6 +1,6 @@
 import { Fireworks } from 'fireworks-js';
 
-
+console.log("App init")
 
 // Set the date we're counting down to
 var countDownDate = new Date("Jan 22, 2023 00:00:00").getTime();
