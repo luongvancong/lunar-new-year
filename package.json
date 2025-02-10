@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/luongvancong/lunar-new-year#readme",
   "dependencies": {
-    "esbuild": "0.16.10",
+    "esbuild": "0.25.0",
     "esbuild-plugin-manifest": "^0.5.0",
     "fireworks-js": "^2.10.0"
   }
